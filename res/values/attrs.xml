@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<declare-styleable name="livebutton">
+		<attr name="pressedHeight" format="dimension"/>
+		<attr name="normalHeight" format="dimension"/>
+		<attr name="backgroundColor" format="color"/>
+		<attr name="shadowColor" format="color"/>
+		<attr name="corners" format="dimension"/>
+	</declare-styleable>
+</resources>
