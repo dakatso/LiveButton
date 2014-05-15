@@ -30,8 +30,6 @@ public class LiveButton extends Button {
 		this(context, attrs, 0);
 	}
 
-	@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-	@SuppressWarnings("deprecation")
 	public LiveButton(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		setIncludeFontPadding(false);
@@ -46,15 +44,7 @@ public class LiveButton extends Button {
 			typedArray.recycle();
 		}
 
-		StateListDrawable states = new StateListDrawable();
-		states.addState(new int[]{android.R.attr.state_pressed}, getLayerList(true));
-		states.addState(new int[]{}, getLayerList(false));
-
-		if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-			setBackgroundDrawable(states);
-		} else {
-			setBackground(states);
-		}
+		initBackground();
 	}
 
 	@Override
@@ -75,7 +65,7 @@ public class LiveButton extends Button {
 		float additionalPadding = getHeight() / 2 - getLineHeight() / 2;
 
 		if (!isPressed()) {
-			additionalPadding -= (int)(normalHeight - pressedHeight);
+			additionalPadding -= (int) (normalHeight - pressedHeight);
 		}
 
 		TextPaint textPaint = getPaint();
@@ -87,6 +77,20 @@ public class LiveButton extends Button {
 			getLayout().draw(canvas);
 		}
 		canvas.restore();
+	}
+
+	@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+	@SuppressWarnings("deprecation")
+	private void initBackground() {
+		StateListDrawable states = new StateListDrawable();
+		states.addState(new int[]{android.R.attr.state_pressed}, getLayerList(true));
+		states.addState(new int[]{}, getLayerList(false));
+
+		if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+			setBackgroundDrawable(states);
+		} else {
+			setBackground(states);
+		}
 	}
 
 	private LayerDrawable getLayerList(boolean isPressed) {
@@ -120,5 +124,50 @@ public class LiveButton extends Button {
 	private float dipToPixels(Context context, float dipValue) {
 		DisplayMetrics metrics = context.getResources().getDisplayMetrics();
 		return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dipValue, metrics);
+	}
+
+	public void setBackgroundColor(int backgroundColor) {
+		this.backgroundColor = backgroundColor;
+		initBackground();
+	}
+
+	public int getBackgroundColor() {
+		return backgroundColor;
+	}
+
+	public void setShadowColor(int shadowColor) {
+		this.shadowColor = shadowColor;
+		initBackground();
+	}
+
+	public int getShadowColor() {
+		return shadowColor;
+	}
+
+	public void setCorners(float corners) {
+		this.corners = corners;
+		initBackground();
+	}
+
+	public float getCorners() {
+		return corners;
+	}
+
+	public void setPressedHeight(float pressedHeight) {
+		this.pressedHeight = pressedHeight;
+		initBackground();
+	}
+
+	public float getPressedHeight() {
+		return pressedHeight;
+	}
+
+	public void setNormalHeight(float normalHeight) {
+		this.normalHeight = normalHeight;
+		initBackground();
+	}
+
+	public float getNormalHeight() {
+		return normalHeight;
 	}
 }
