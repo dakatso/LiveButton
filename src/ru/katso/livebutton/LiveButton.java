@@ -53,9 +53,6 @@ public class LiveButton extends Button {
 			if (event.getAction() == MotionEvent.ACTION_DOWN) {
 				setPressed(true);
 			}
-			if (event.getAction() == MotionEvent.ACTION_UP) {
-				setPressed(false);
-			}
 		}
 		return super.onTouchEvent(event);
 	}
