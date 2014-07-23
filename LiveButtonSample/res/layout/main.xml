@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content">
+
+	<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="match_parent"
+			android:padding="16dp"
+			android:layout_height="wrap_content">
+
+		<TextView
+				android:layout_width="match_parent"
+				android:text="Normal Height"
+				android:textSize="18sp"
+				android:textStyle="bold"
+				android:layout_height="wrap_content"/>
+
+		<SeekBar
+				android:layout_width="match_parent"
+				android:max="20"
+				android:layout_height="wrap_content"
+				android:id="@+id/seekNormalHeight"/>
+
+		<TextView
+				android:layout_marginTop="15dp"
+				android:layout_width="match_parent"
+				android:text="Pressed Height"
+				android:textSize="18sp"
+				android:textStyle="bold"
+				android:layout_height="wrap_content"/>
+
+		<SeekBar
+				android:layout_width="match_parent"
+				android:max="20"
+				android:layout_height="wrap_content"
+				android:id="@+id/seekPressedHeight"/>
+
+		<TextView
+				android:layout_marginTop="15dp"
+				android:layout_width="match_parent"
+				android:text="Corners"
+				android:textSize="18sp"
+				android:textStyle="bold"
+				android:layout_height="wrap_content"/>
+
+		<SeekBar
+				android:layout_width="match_parent"
+				android:max="30"
+				android:layout_height="wrap_content"
+				android:id="@+id/seekCorners"/>
+
+		<ru.katso.livebutton.LiveButton xmlns:livebutton="http://schemas.android.com/apk/res-auto"
+		                                android:id="@+id/button"
+		                                android:layout_gravity="center_horizontal"
+		                                android:layout_margin="100dp"
+		                                android:layout_height="60dp"
+		                                android:layout_width="300dp"
+		                                android:gravity="center"
+		                                android:text="Button"
+		                                android:textColor="#ffffff"
+		                                android:textStyle="bold"
+		                                android:textSize="26sp"
+		                                livebutton:corners="4dp"
+		                                livebutton:normalHeight="4dp"
+		                                livebutton:pressedHeight="2dp"
+		                                livebutton:backgroundColor="#F57F76"
+		                                livebutton:shadowColor="#b16262"/>
+	</LinearLayout>
+
+</ScrollView>

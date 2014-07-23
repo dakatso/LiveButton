@@ -37,12 +37,14 @@ public class LiveButton extends Button {
 		TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.livebutton, defStyle, 0);
 		if (typedArray != null) {
 			backgroundColor = typedArray.getColor(R.styleable.livebutton_backgroundColor, backgroundColor);
-			shadowColor = typedArray.getColor(R.styleable.livebutton_shadowColor, backgroundColor);
+			shadowColor = typedArray.getColor(R.styleable.livebutton_shadowColor, shadowColor);
 			corners = typedArray.getDimension(R.styleable.livebutton_corners, dipToPixels(getContext(), corners));
 			pressedHeight = typedArray.getDimension(R.styleable.livebutton_pressedHeight, dipToPixels(getContext(), pressedHeight));
 			normalHeight = typedArray.getDimension(R.styleable.livebutton_normalHeight, dipToPixels(getContext(), normalHeight));
 			typedArray.recycle();
 		}
+
+		setOnClickListener(null);
 
 		initBackground();
 	}
@@ -59,11 +61,15 @@ public class LiveButton extends Button {
 
 	@Override
 	protected void onDraw(Canvas canvas) {
-		float additionalPadding = getHeight() / 2 - getLineHeight() / 2;
+		float additionalPadding;
 
-		if (!isPressed()) {
-			additionalPadding -= (int) (normalHeight - pressedHeight);
+		if (isPressed()) {
+			additionalPadding = (getHeight() + normalHeight) / 2;
+			additionalPadding -= pressedHeight;
+		} else {
+			additionalPadding = (getHeight() - normalHeight) / 2;
 		}
+		additionalPadding -= getLineHeight() / 2;
 
 		TextPaint textPaint = getPaint();
 		textPaint.setColor(getCurrentTextColor());
@@ -123,17 +129,12 @@ public class LiveButton extends Button {
 		return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dipValue, metrics);
 	}
 
-	public void setBackgroundColor(int backgroundColor) {
-		this.backgroundColor = backgroundColor;
-		initBackground();
-	}
-
 	public int getBackgroundColor() {
 		return backgroundColor;
 	}
 
-	public void setShadowColor(int shadowColor) {
-		this.shadowColor = shadowColor;
+	public void setBackgroundColor(int backgroundColor) {
+		this.backgroundColor = backgroundColor;
 		initBackground();
 	}
 
@@ -141,8 +142,8 @@ public class LiveButton extends Button {
 		return shadowColor;
 	}
 
-	public void setCorners(float corners) {
-		this.corners = corners;
+	public void setShadowColor(int shadowColor) {
+		this.shadowColor = shadowColor;
 		initBackground();
 	}
 
@@ -150,8 +151,8 @@ public class LiveButton extends Button {
 		return corners;
 	}
 
-	public void setPressedHeight(float pressedHeight) {
-		this.pressedHeight = pressedHeight;
+	public void setCorners(float corners) {
+		this.corners = corners;
 		initBackground();
 	}
 
@@ -159,12 +160,17 @@ public class LiveButton extends Button {
 		return pressedHeight;
 	}
 
-	public void setNormalHeight(float normalHeight) {
-		this.normalHeight = normalHeight;
+	public void setPressedHeight(float pressedHeight) {
+		this.pressedHeight = pressedHeight;
 		initBackground();
 	}
 
 	public float getNormalHeight() {
 		return normalHeight;
+	}
+
+	public void setNormalHeight(float normalHeight) {
+		this.normalHeight = normalHeight;
+		initBackground();
 	}
 }
