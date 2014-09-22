@@ -57,7 +57,6 @@
 		                                android:layout_margin="100dp"
 		                                android:layout_height="60dp"
 		                                android:layout_width="300dp"
-		                                android:gravity="center"
 		                                android:text="Button"
 		                                android:textColor="#ffffff"
 		                                android:textStyle="bold"
