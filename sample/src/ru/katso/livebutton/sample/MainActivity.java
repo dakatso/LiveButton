@@ -1,4 +1,4 @@
-package ru.katso.livebuttonsample;
+package ru.katso.livebutton.sample;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -25,7 +25,6 @@ public class MainActivity extends Activity {
         setOnSeekBarChangeListener(seekPressedHeight, PRESSED_HEIGHT);
         setOnSeekBarChangeListener(seekNormalHeight, NORMAL_HEIGHT);
         setOnSeekBarChangeListener(seekCorners, CORNERS);
-
     }
 
     public void setOnSeekBarChangeListener(SeekBar seekBar, final int id) {
