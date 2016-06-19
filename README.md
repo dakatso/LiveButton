@@ -1,5 +1,6 @@
 LiveButton
 ==========
+[![MavenCentral](https://img.shields.io/badge/maven-1.0.0-blue.svg)](http://mvnrepository.com/artifact/com.github.dakatso/livebutton) [![AndroidArsenal](https://img.shields.io/badge/Android%20Arsenal-LiveButton-green.svg?style=true)](https://android-arsenal.com/details/1/3744)
 
 ![ScreenShot](https://raw.github.com/dakatso/LiveButton/master/example.gif)
 
